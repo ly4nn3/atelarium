@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="tofu" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Atelarium · Color Semantics Demo</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* -----------------------
+      PALETTE TOKENS
+      ----------------------- */
+
+      /* Tofu Light */
+      :root {
+        --canvas-surface-tofu-light: #fcf8f5;
+        --surface-subtle-tofu-light: #f2f0ef;
+        --text-primary-tofu-light: #2c2b2b;
+        --text-secondary-tofu-light: #403f3e;
+        --border-tofu-light: #c9c6c4;
+        --focus-tofu-light: #191919;
+        --emphasis-tofu-light: var(--text-primary-tofu-light);
+
+        /* Tofu Dark — single text color by design */
+        --canvas-tofu-dark: #191919;
+        --surface-tofu-dark: #2c2b2b;
+        --surface-subtle-tofu-dark: #403f3e;
+        --text-tofu-dark: #fcf8f5;
+        --border-tofu-dark: #403f3e;
+        --focus-tofu-dark: #fcf8f5;
+        --emphasis-tofu-dark: var(--text-tofu-dark);
+
+        /* Pea Light */
+        --canvas-surface-pea-light: #ebe9fb;
+        --surface-subtle-pea-light: #d5d0f7;
+        --text-primary-pea-light: #0e0b3d;
+        --text-secondary-pea-light: #171264;
+        --border-pea-light: #a19bed;
+        --focus-pea-light: #050416;
+        --emphasis-pea-light: var(--text-primary-pea-light);
+
+        /* Pea Dark — single text color by design */
+        --canvas-pea-dark: #050416;
+        --surface-pea-dark: #0d1d33;
+        --surface-subtle-pea-dark: #0b213d;
+        --text-pea-dark: #ebe9fb;
+        --border-pea-dark: #153661;
+        --focus-pea-dark: #ebe9fb;
+        --emphasis-pea-dark: var(--text-pea-dark);
+      }
+
+      :root {
+        --canvas: var(--canvas-surface-tofu-light);
+        --surface: var(--canvas-surface-tofu-light);
+        --surface-subtle: var(--surface-subtle-tofu-light);
+        --text-primary: var(--text-primary-tofu-light);
+        --text-secondary: var(--text-secondary-tofu-light);
+        --border: var(--border-tofu-light);
+        --focus: var(--focus-tofu-light);
+        --emphasis: var(--emphasis-tofu-light);
+      }
+
+      [data-palette="tofu"][data-theme="light"] {
+        --canvas: var(--canvas-surface-tofu-light);
+        --surface: var(--canvas-surface-tofu-light);
+        --surface-subtle: var(--surface-subtle-tofu-light);
+        --text-primary: var(--text-primary-tofu-light);
+        --text-secondary: var(--text-secondary-tofu-light);
+        --border: var(--border-tofu-light);
+        --focus: var(--focus-tofu-light);
+        --emphasis: var(--emphasis-tofu-light);
+      }
+
+      [data-palette="tofu"][data-theme="dark"] {
+        --canvas: var(--canvas-tofu-dark);
+        --surface: var(--surface-tofu-dark);
+        --surface-subtle: var(--surface-subtle-tofu-dark);
+
+        /* Dark mode uses a single text color for legibility */
+        --text-primary: var(--text-tofu-dark);
+        --text-secondary: var(--text-tofu-dark);
+
+        --border: var(--border-tofu-dark);
+        --focus: var(--focus-tofu-dark);
+        --emphasis: var(--emphasis-tofu-dark);
+      }
+
+      [data-palette="pea"][data-theme="light"] {
+        --canvas: var(--canvas-surface-pea-light);
+        --surface: var(--canvas-surface-pea-light);
+        --surface-subtle: var(--surface-subtle-pea-light);
+        --text-primary: var(--text-primary-pea-light);
+        --text-secondary: var(--text-secondary-pea-light);
+        --border: var(--border-pea-light);
+        --focus: var(--focus-pea-light);
+        --emphasis: var(--emphasis-pea-light);
+      }
+
+      [data-palette="pea"][data-theme="dark"] {
+        --canvas: var(--canvas-pea-dark);
+        --surface: var(--surface-pea-dark);
+        --surface-subtle: var(--surface-subtle-pea-dark);
+
+        /* Dark mode uses a single text color for legibility */
+        --text-primary: var(--text-pea-dark);
+        --text-secondary: var(--text-pea-dark);
+
+        --border: var(--border-pea-dark);
+        --focus: var(--focus-pea-dark);
+        --emphasis: var(--emphasis-pea-dark);
+      }
+
+      /* -----------------------
+      BASE STYLES
+      ----------------------- */
+      body {
+        margin: 0;
+        font-family: "Source Sans 3", system-ui, sans-serif;
+        background: var(--canvas);
+        color: var(--text-primary);
+        line-height: 1.65;
+        letter-spacing: 0.2px;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .container {
+        max-width: 760px;
+        padding: 64px 32px;
+        margin: 0 auto;
+      }
+
+      button {
+        font-family: inherit;
+        font-size: 0.875rem;
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 2px solid var(--border);
+        background: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+      }
+
+      button:hover {
+        color: var(--text-primary);
+      }
+
+      h1,
+      h2 {
+        font-family: "Montserrat Alternates", system-ui, sans-serif;
+        font-weight: 500;
+        line-height: 1.25;
+        margin: 0 0 24px 0;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 56px;
+      }
+
+      p {
+        margin: 0 0 24px 0;
+      }
+
+      a {
+        color: var(--emphasis);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .meta {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 24px;
+      }
+
+      .mono {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      .card {
+        background: var(--surface);
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        padding: 24px;
+        margin: 32px 0;
+      }
+
+      .selected {
+        background: var(--surface-subtle);
+        padding: 12px;
+        border-radius: 6px;
+      }
+
+      .focus-demo {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 6px;
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+        font-size: 0.875rem;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 64px 0;
+      }
+
+      .controls {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="controls">
+        <button id="toggleTheme">Toggle light / dark</button>
+        <button id="togglePalette">Toggle tofu / pea</button>
+      </div>
+
+      <h1>Atelarium</h1>
+      <p class="meta">
+        Typography and semantic color demo · silken tofu & butterfly pea
+      </p>
+
+      <h2>Long-form writing</h2>
+      <p>
+        This is a place to keep the things that matter to you. Nothing here asks
+        for urgency. You can return, leave, and return again —
+        <a href="#">the space remains</a>.
+      </p>
+
+      <div class="selected">
+        <p>
+          This paragraph represents a <strong>selected region</strong>. Focused
+          and selected use the same color role.
+        </p>
+      </div>
+
+      <h2>UI & structure</h2>
+      <div class="card">
+        <p class="meta">Optional · nothing is required</p>
+        <span class="focus-demo">Focused element</span>
+      </div>
+
+      <h2>Data & reference</h2>
+      <div class="card">
+        <p class="mono">ID: AT-0924-X</p>
+        <p class="mono">Created: 2026-01-03 · 21:42</p>
+        <p class="mono">Words: 1,284</p>
+      </div>
+
+      <hr />
+      <p class="meta">
+        Source Sans 3 · Montserrat Alternates · JetBrains Mono | v1.0
+      </p>
+    </main>
+
+    <script>
+      const root = document.documentElement;
+
+      document.getElementById("toggleTheme").onclick = () => {
+        root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+      };
+
+      document.getElementById("togglePalette").onclick = () => {
+        root.dataset.palette = root.dataset.palette === "pea" ? "tofu" : "pea";
+      };
+    </script>
+  </body>
+</html>
